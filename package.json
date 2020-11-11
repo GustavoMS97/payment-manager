@@ -1,0 +1,25 @@
+{
+  "name": "payment-manager",
+  "version": "1.0.0",
+  "description": "Projeto para gerenciar contas á pagar e contas á receber.",
+  "main": "src/application.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoMS97/payment-manager.git"
+  },
+  "keywords": [
+    "contas",
+    "pagar",
+    "receber",
+    "gerenciamento"
+  ],
+  "author": "Gustavo Santos e Alexandre Borges",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/GustavoMS97/payment-manager/issues"
+  },
+  "homepage": "https://github.com/GustavoMS97/payment-manager#readme"
+}
