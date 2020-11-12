@@ -1,4 +1,4 @@
-const { EVENT_TYPES, STATE_TYPES, ACCOUNT_TYPES } = require('../../constants');
+const { EVENT_PAY_TYPES, EVENT_RECEIVE_TYPES, STATE_TYPES, ACCOUNT_TYPES, ACCOUNT_TYPE } = require('../../constants');
 
 /**
  * @param {{ mongoose: import('mongoose') }} param
@@ -13,12 +13,21 @@ exports.PaymentRecordFactory = ({ mongoose } = {}) => {
     originalValue: { type: Number, required: true },
     paidValue: { type: Number },
     dueDate: { type: Date, required: true },
+    accountType: {
+      type: Number,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return ACCOUNT_TYPES.map((a) => a).includes(v);
+        },
+      },
+    },
     event: {
       type: Number,
       required: true,
       validate: {
         validator: function (v) {
-          return EVENT_TYPES.map((a) => a.id).includes(v);
+          return EVENT_PAY_TYPES.map((a) => a).includes(v) || EVENT_RECEIVE_TYPES.map((a) => a).includes(v);
         },
       },
     },
@@ -27,19 +36,11 @@ exports.PaymentRecordFactory = ({ mongoose } = {}) => {
       required: true,
       validate: {
         validator: function (v) {
-          return STATE_TYPES.map((a) => a.id).includes(v);
+          return STATE_TYPES.map((a) => a).includes(v);
         },
       },
     },
-    accountType: {
-      type: Number,
-      required: true,
-      validate: {
-        validator: function (v) {
-          return ACCOUNT_TYPES.map((a) => a.id).includes(v);
-        },
-      },
-    },
+
     createdAt: {
       type: Date,
       default: Date.now,
