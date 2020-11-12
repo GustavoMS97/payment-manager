@@ -12,7 +12,7 @@ exports.MovementFactory = ({ mongoose } = {}) => {
       required: true,
       validate: {
         validator: function (v) {
-          return MOVING_TYPES.map((a) => a.id).includes(v);
+          return MOVING_TYPES.map((a) => a).includes(v);
         },
       },
     },
